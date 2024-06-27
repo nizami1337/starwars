@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: none;
+}
+
+nav img {
+    width: 10%;
+    height: auto;
+}
+
+.nav__links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav__link a {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav__link a:hover {
+    text-shadow: 0 0 3px #fff;
+}
