@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Movies.css"
+import Header from "../Header/Header";
 
 interface Movie {
     title: string,
@@ -21,31 +22,37 @@ interface Movie {
 const Movies = () => {
 
     const [movies, setMovies] = useState<Movie[]>([]);
-
+    let nexturl : any = ''
     async function getMovies() {
-        await fetch('https://swapi.dev/api/films').then(x => x.json()).then(x => setMovies(x.results))
+        const r = await fetch(!nexturl ? "https://swapi.dev/api/films/?format=json" : nexturl+"?format=json")
+        const json = await r.json();
+        nexturl = json.next
+        console.log(nexturl)
+        console.log(json.results)
+        setMovies(json.results)
     }
 
     // useEffect(() => {
     //     getMovies()
     // }, [])
-
     getMovies()
-    console.log(movies)
 
     return (
+        <>
+        <Header></Header>
         <div className="container">
             {movies.map(item => {
                 return (
                     <div className="item">
-                        <h2>{item}</h2>
-                        <span className="item__field">Release Date: 1977-05-25</span>
-                        <span className="item__field">Directed by: George Lucas</span>
-                        <span className="item__field">Producer(s): Gary Kurtz, Rick McCallum</span>
+                        <h2>{item.title}</h2>
+                        <span className="item__field">Release Date: {item.release_date}</span>
+                        <span className="item__field">Directed by {item.director}</span>
+                        <span className="item__field">Producer(s): {item.producer}</span>
                     </div>
                 )
             })}
         </div>
+        </>
     )
 }
 
