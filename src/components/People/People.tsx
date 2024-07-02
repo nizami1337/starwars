@@ -23,8 +23,13 @@ interface Person {
 
 const People = () => {
 
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const [people, setPeople] = useState<Person[]>([]);
     const [nextUrl, setNextUrl] = useState<string>('');
+
+    const handleModal = () => {
+        setIsOpen(!isOpen)
+    }
     
     async function getPeople() {
         let urlToFetch = !nextUrl ? "https://swapi.dev/api/people/?format=json" : nextUrl

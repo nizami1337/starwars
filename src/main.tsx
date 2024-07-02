@@ -8,6 +8,9 @@ import App from './App.tsx'
 import Movies from './components/Movies/Movies.tsx'
 import { Link, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import People from './components/People/People.tsx'
+import Starships from './components/Starships/Starships.tsx'
+import Vehicles from './components/Vehicles/Vehicles.tsx'
+import Species from './components/Species/Species.tsx'
 
 
 const router = createBrowserRouter([
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
   {
     path: '/people',
     element: <People />
+  },
+  {
+    path: '/starships',
+    element: <Starships />
+  },
+  {
+    path: '/vehicles',
+    element: <Vehicles />
+  },
+  {
+    path: '/species',
+    element: <Species />
   },
   // {
   //   path: '/photos/:photoId',
